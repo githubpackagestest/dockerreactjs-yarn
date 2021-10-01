@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Test Project",
+  "author": "Test Project1",
+  "url" : "https://www.patdel.com/"
+  "scripts": {
+      "start": "node your-script.js"
+    },
+  "husky": {
+    }
+  },
+  "browserslist": {
+    ],
+    "development": [
+    ]
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
