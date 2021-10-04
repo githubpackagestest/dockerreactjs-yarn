@@ -1,5 +1,5 @@
 # pull the base image
-FROM node:alpine
+FROM node:12-alpine
 
 # set the working direction
 WORKDIR /
@@ -11,10 +11,11 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install
+# adding yarn
+RUN yarn
 
 # add app
 COPY . ./
 
 # start app
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
