@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buysellguess-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buysellguess
+  template:
+    metadata:
+      labels:
+        app: buysellguess
+    spec:
+      containers:
+        - name: buysellguessapp
+          image: ghcr.io/pwdelbloomboard/ps-container

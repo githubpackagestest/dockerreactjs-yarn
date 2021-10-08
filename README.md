@@ -6,6 +6,7 @@ https://user-images.githubusercontent.com/13304149/129398640-5751e777-c952-4456-
 # Prerequisites
 
 * Docker
+* React
 
 # Quick Install - Docker Version
 
@@ -31,13 +32,13 @@ ps-container:dev
 To run the react app only, without docker, navigate to the /app file and enter:
 
 ```
-$ npm start
+$ yarn start
 ```
 
 # Demo Deployment:
 
-[morning-escarpment-67260.herokuapp.com](https://morning-escarpment-67260.herokuapp.com/)
+None at this time.
 
 # Notes
 
-Prodution build was not used on the Demo Deployment, only dev build.
+* None at this time.
