@@ -1,0 +1,80 @@
+---
+# Source: helm-buysellguessapp/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: buysellguessapp-helmtemplate-helm-buysellguessapp
+  labels:
+    helm.sh/chart: helm-buysellguessapp-0.1.0
+    app.kubernetes.io/name: helm-buysellguessapp
+    app.kubernetes.io/instance: buysellguessapp-helmtemplate
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: helm-buysellguessapp/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: buysellguess-svc-helm
+spec:
+  type: ClusterIP
+  selector:
+    app: buysellguess
+  ports:
+    - port: 2345
+      protocol: TCP
+      targetPort: 3000
+---
+# Source: helm-buysellguessapp/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buysellguess-dep-helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buysellguess
+  template:
+    metadata:
+      labels:
+        app: buysellguess
+    spec:
+      containers:
+        - name: buysellguessapp
+          image: ghcr.io/pwdelbloomboard/ps-container
+---
+# Source: helm-buysellguessapp/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: buysellguess-dep-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: buysellgess-dep-ingress-backend
+          servicePort: 2345
+---
+# Source: helm-buysellguessapp/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "buysellguessapp-helmtemplate-helm-buysellguessapp-test-connection"
+  labels:
+    helm.sh/chart: helm-buysellguessapp-0.1.0
+    app.kubernetes.io/name: helm-buysellguessapp
+    app.kubernetes.io/instance: buysellguessapp-helmtemplate
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['buysellguessapp-helmtemplate-helm-buysellguessapp:80']
+  restartPolicy: Never
