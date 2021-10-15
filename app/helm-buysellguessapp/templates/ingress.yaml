@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: buysellguess-dep-ingress
+  name: buysellguess-dep-ingress-helm
 spec:
   rules:
   - http:

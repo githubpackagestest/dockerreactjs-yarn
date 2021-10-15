@@ -7,6 +7,6 @@ spec:
   selector:
     app: buysellguess
   ports:
-    - port: 2345
+    - port: 3000
       protocol: TCP
       targetPort: 3000
