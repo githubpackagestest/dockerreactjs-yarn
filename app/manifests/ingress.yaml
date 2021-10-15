@@ -1,12 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx-public
   name: buysellguess-dep-ingress
 spec:
   rules:
-  - http:
+  - host: buysellguess.local.bloomboard.com
+    http:
       paths:
       - path: /
         backend:
           serviceName: buysellguess-dep
-          servicePort: 2345
+          servicePort: 3000

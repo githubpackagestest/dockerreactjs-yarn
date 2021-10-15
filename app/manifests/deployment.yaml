@@ -13,5 +13,6 @@ spec:
         app: buysellguess
     spec:
       containers:
-        - name: buysellguessapp
-          image: ghcr.io/pwdelbloomboard/ps-container
+        - name: buysellguessapp-in-k3d-hi
+          image: k3d-registry.localhost:5000/pwdelbloomboard/ps-container
+          imagePullPolicy: "Always"
